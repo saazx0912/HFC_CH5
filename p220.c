@@ -1,11 +1,17 @@
 #include <stdio.h>
 
+struct preference{
+    const char *food;
+    float exercise_hours;
+};
+
 struct fish{
     const char *name;
     const char *species;
     int teeth;
     int age;
     int favorite_music;
+    struct preference care;
 };
 
 
@@ -26,12 +32,13 @@ void label(struct fish f){
 
 int main(){
 
-    struct fish snappy = {"Snappy" , "Piranha" , 69 ,4};
-
+    struct fish snappy = {"Snappy" , "Piranha" , 69 ,4 ,5,{"Meat" ,7.5}};
+    struct fish gnasher = snappy;
     catalog(snappy);
     label(snappy);
 
-
+    printf("Snappy likes to eat %s\n",snappy.care.food);
+    printf("Snappy likes to exercise for %0.2f hours" , snappy.care.exercise_hours);
 
     return 0;
 }
